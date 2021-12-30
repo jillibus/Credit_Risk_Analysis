@@ -50,6 +50,7 @@ Counter({'low_risk': 17118, 'high_risk': 87})
 For my analysis, there are 2 ways to use resampling, you can _Over Sample_ and _Under Sample_. 
 
 ### Over Sampling
+
 Using the RandomOverSampler, I resampled the X and Y data, and the Counter returned an equal paring.
 ```
 from imblearn.over_sampling import RandomOverSampler
@@ -132,6 +133,89 @@ the same on high_risk customers and a bit lower on low_risk customers.
 
 ## For Deliverable 3, I will use the Ensemble Classifiers to Predict Credit Risk.
 
+To perform _Ensemble Classifiers_, I  again used the Skikit-Learn package.  I followed the same steps as above of
+1) Reading in the data set into a DataFrame
+2)  Check the balance of our target values
+3)  Split the data into Training and Testing data sets (75% to Training 25% to Testing)
+4)  Create the model, and in this case I am going to use the _BalancedRandomForestClassifier_ Model
+
+```
+# Resample the training data with the BalancedRandomForestClassifier
+from imblearn.ensemble import BalancedRandomForestClassifier
+brfc_classifier = BalancedRandomForestClassifier(n_estimators=125, random_state=1)
+
+# Fit Train Data
+brfc_classifier.fit(X_train, y_train)
+
+# Calculated the balanced accuracy score
+y_pred = brfc_classifier.predict(X_test)
+balanced_accuracy_score(y_test, y_pred)
+```
+The Prection came back as: 0.7988.  I ran the confusion matrix and printed the classification report to see if this model returned the 79.9% score.
+```
+			Predicted high_risk	Predicted low_risk
+Actual high_risk	59			28
+Actual low_risk		1379			15739
+
+                   pre       rec       spe        f1       geo       iba       sup
+
+  high_risk       0.04      0.68      0.92      0.08      0.79      0.61        87
+   low_risk       1.00      0.92      0.68      0.96      0.79      0.64     17118
+
+avg / total       0.99      0.92      0.68      0.95      0.79      0.64     17205
+```
+An addition check was to determine the top features, or other factors that were weighed into the decision to determine Credit Risk.
+```
+features_sorted = sorted(zip(brfc_classifier.feature_importants_, X.columns), reverse=True)
+
+for feature in features_sorted:
+    print(f'{feature[1]}: ({feature[0]})')
+    
+total_rec_prncp: (0.0706755269254938)
+total_rec_int: (0.06371644260100186)
+total_pymnt_inv: (0.061581668538716175)
+total_pymnt: (0.061158162146968405)
+last_pymnt_amnt: (0.05068753857790412)
+int_rate: (0.02424115516126539)
+out_prncp: (0.019106636722545946)
+dti: (0.018555462772792814)
+issue_d_Jan-2019: (0.018088314821659356)  
+```
+
+The second Ensemble Model I chose was the **Easy Ensemble AdaBoost Classifier**. The steps were the same as above, as shown below:
+```
+# Train the EasyEnsembleClassifier
+from imblearn.ensemble import EasyEnsembleClassifier
+
+easy_Classifier = EasyEnsembleClassifier(n_estimators=125, random_state=1)
+
+# Fit Train Data
+easy_Classifier.fit(X_train, y_train)
+
+# Calculated the balanced accuracy score
+y_pred = easy_Classifier.predict(X_test)
+balanced_accuracy_score(y_test, y_pred)
+```
+The prediction from the balanced_accuracy_score was 92.5%.  I continued with creating the confusion matrix and printing the classification report.
+```
+			Predicted high_risk	Predicted low_risk
+Actual high_risk	79			8
+Actual low_risk		980			16138
+
+                   pre       rec       spe        f1       geo       iba       sup
+
+  high_risk       0.07      0.91      0.94      0.14      0.93      0.85        87
+   low_risk       1.00      0.94      0.91      0.97      0.93      0.86     17118
+
+avg / total       0.99      0.94      0.91      0.97      0.93      0.86     17205
+
+```
+The comparision between the Ensemble Classifier and the Easy Ensemble AdaBoost Classifier, were quite different, in my opinion.
+The overall _Precision_ total is still at 99%, with the _high_risk_ category a bit better in the AdaBoost Classifier.  The Sensitivity
+in the _high_risk_ category for the AdaBoost Classifier out performed the Ensemble 91% to 68%, and the _low_risk_ category 94% to 92%.
+Even the f1 scores the Easy Ensemble AdaBoost Classifier beat the Ensemble Classifier in both the _low_risk_ and _high_risk_ categories.
+
+# Summary
 
 
 
@@ -150,20 +234,6 @@ the same on high_risk customers and a bit lower on low_risk customers.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-f
 Thank you for your time and let me know if you wish to see any additional data.
 
 Jill Hughes
