@@ -78,6 +78,8 @@ Actual low_risk		5821	          	11297
 
 avg / total       0.99      0.66      0.62      0.79      0.64      0.41     17205
 ```
+### Under Sampling
+
 Using Under Sampling, I used the **ClusterCentroids** from the Scikit-Learn package.
 ```
 from imblearn.under_sampling import ClusterCentroids
@@ -107,7 +109,8 @@ This showed us that the _Under Sampling_ Model produced a worse outcome than the
 
 ## For Deliverable 2: I will use the SMOTEENN Algorithm to Predict Credit Risk.
 
-I took the Over Sampling and Under Sampling Models and merged them to create a 3rd Model, to see if combining them would make the predictions even better for the customer.  Using the **SMOTEEN** Model from the Skikit-learn library, i followed the same steps, and resampled the data.
+### SMOTEENN Sampling (Combination of Over and Under Sampling)
+I took the Over Sampling and Under Sampling Models and merged them to create a 3rd Model, to see if combining them would make the predictions even better for the customer.  Using the **SMOTEENN** Model from the Skikit-learn library, i followed the same steps, and resampled the data.
 ```
 overunder = SMOTEENN(random_state=1)
 X_resampled, y_resampled = overunder.fit_resample(X_train, y_train)
@@ -139,6 +142,9 @@ To perform _Ensemble Classifiers_, I  again used the Skikit-Learn package.  I fo
 2)  Check the balance of our target values
 3)  Split the data into Training and Testing data sets (75% to Training 25% to Testing)
 4)  Create the model, and in this case I am going to use the **BalancedRandomForestClassifier** Model
+
+
+### Using the Balanced Random Forest Classifier
 
 ```
 # Resample the training data with the BalancedRandomForestClassifier
@@ -182,6 +188,8 @@ out_prncp: (0.019106636722545946)
 dti: (0.018555462772792814)
 issue_d_Jan-2019: (0.018088314821659356)  
 ```
+
+### Using the Easy Ensemble AdaBoost lassifier
 
 The second Ensemble Model I chose was the **Easy Ensemble AdaBoost Classifier**. The steps were the same as above, as shown below:
 ```
