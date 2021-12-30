@@ -104,7 +104,7 @@ avg / total       0.99      0.47      0.57      0.63      0.52      0.26     172
 ```
 This showed us that the _Under Sampling_ Model produced a worse outcome than the _Over Sampling_ Model.  The Sensitivty scores, were much lower in the Under Sampling Model.
 
-## For Deliverable 2, I will use the SMOTEENN Algorithm to Predict Credit Risk.
+## For Deliverable 2: I will use the SMOTEENN Algorithm to Predict Credit Risk.
 
 I took the Over Sampling and Under Sampling Models and merged them to create a 3rd Model, to see if combining them would make the predictions even better for the customer.  Using the SMOTEEN Model from the Skikit-learn library, i followed the same steps, and resampled the data.
 ```
@@ -131,7 +131,7 @@ This combination, is an overall improvement over the _Under Sampling_ model.  Wh
 the **Precision** is the same, the **Sensitivity** is higher on high_risk customers, and lower on low_risk customers, the  **F1** score is again
 the same on high_risk customers and a bit lower on low_risk customers.
 
-## For Deliverable 3, I will use the Ensemble Classifiers to Predict Credit Risk.
+## For Deliverable 3: I will use the Ensemble Classifiers to Predict Credit Risk.
 
 To perform _Ensemble Classifiers_, I  again used the Skikit-Learn package.  I followed the same steps as above of
 1)  Reading in the data set into a DataFrame
