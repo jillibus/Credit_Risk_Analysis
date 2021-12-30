@@ -66,6 +66,7 @@ Counter({'low_risk': 51352, 'high_risk': 51352})
 This allowed me to analyize the _low_risk vs high_risk_ with even data.
 The confusion matrix from Over Sampling and Classifier Report is below:
 ```
+
 	          	Predicted high_risk	Predicted low_risk
 Actual high_risk	54	          	33
 Actual low_risk		5821	          	11297
@@ -217,22 +218,20 @@ Even the f1 scores the Easy Ensemble AdaBoost Classifier beat the Ensemble Class
 
 # Summary
 
+Reviewing all six models, the _Easy Ensemble AdaBoost Classifier_, out performed all the other five models, it yieled a **92.54%** accuracy rate, with
+a 7% precision rate when predicting _High Risk_ customers. The sensitivity rate of **92%** was also the highest of the six Models for the _High Risk_ customers. This shows that the Easy Ensemble AdaBoost Classifier will give the Bank or Lending Company confidence that it will know which customers that are _High Risk_ before getting to far in the Loan Application Process.
 
+Reviewing the _Low Risk_ Customers, the Sensitivty was again the highest at **94%** with an F1 score of **97%**.  This too will give the customer the confidence that it can locate low_risk customers requesting loans right away.
 
+I would definitely recommend using the **Easy Ensemble Classifier** as the Model to predict the _High Risk_ and _Low Risk_ candidates for loans.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+**Listing the Models by Scores, best to worse**
+* Easy Ensemble Classifier: 92.54% accuracy, 7% precision, 91% sensitivity, 14% F1 score
+* Balanced Random Forest Classifier: 79.88% accuracy, 4% precision, 68% sensitivity, 8% F1 score
+* OverSampling :  64.03% accuracy, 1% precision, 62% sensitivity, 2% F1 score
+* SMOTEENN Combination: 63.16% accuracy, 1% precision, 71% sensitivity, 2% F1 score
+* SMOTE OverSampling:  62.87% accuracy,1% precision, 57% sensitivity, 2% F1 score
+* UnderSampling: 51.99% accuracy, 1% precision, 57% sensitivity, 1% F1 score
 
 Thank you for your time and let me know if you wish to see any additional data.
 
