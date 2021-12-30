@@ -66,9 +66,9 @@ Counter({'low_risk': 51352, 'high_risk': 51352})
 This allowed me to analyize the _low_risk vs high_risk_ with even data.
 The confusion matrix from Over Sampling and Classifier Report is below:
 ```
-	          Predicted high_risk	Predicted low_risk
-Actual high_risk	54	          33
-Actual low_risk		5821	          11297
+	          	Predicted high_risk	Predicted low_risk
+Actual high_risk	54	          	33
+Actual low_risk		5821	          	11297
 
                    pre       rec       spe        f1       geo       iba       sup
 
@@ -106,7 +106,7 @@ This showed us that the _Under Sampling_ Model produced a worse outcome than the
 
 ## For Deliverable 2, I will use the SMOTEENN Algorithm to Predict Credit Risk.
 
-I then modeled these 2 models together, to see if combining them would make the predictions even better for the customer.  Using the SMOTEEN Model from the Skikit-learn library, i followed the same steps, and resampled the data.
+I took the Over Sampling and Under Sampling Models and merged them to create a 3rd Model, to see if combining them would make the predictions even better for the customer.  Using the SMOTEEN Model from the Skikit-learn library, i followed the same steps, and resampled the data.
 ```
 overunder = SMOTEENN(random_state=1)
 X_resampled, y_resampled = overunder.fit_resample(X_train, y_train)
@@ -116,9 +116,9 @@ Counter({'high_risk': 51351, 'low_risk': 46389})
 ```
 I continued with the fit and balanced_accuracy_score and created the confusion matrix.  The results are below:
 ```
-                    Predicted high_risk	Predicted low_risk
-Actual high_risk	62	          25
-Actual low_risk	7694	          9424
+                    	Predicted high_risk	Predicted low_risk
+Actual high_risk	62	          	25
+Actual low_risk		7694	          	9424
 
                    pre       rec       spe        f1       geo       iba       sup
 
@@ -134,7 +134,7 @@ the same on high_risk customers and a bit lower on low_risk customers.
 ## For Deliverable 3, I will use the Ensemble Classifiers to Predict Credit Risk.
 
 To perform _Ensemble Classifiers_, I  again used the Skikit-Learn package.  I followed the same steps as above of
-1) Reading in the data set into a DataFrame
+1)  Reading in the data set into a DataFrame
 2)  Check the balance of our target values
 3)  Split the data into Training and Testing data sets (75% to Training 25% to Testing)
 4)  Create the model, and in this case I am going to use the _BalancedRandomForestClassifier_ Model
