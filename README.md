@@ -89,7 +89,7 @@ Counter({'high_risk': 260, 'low_risk': 260})
 ```
 This brought the high_risk number down to the low_risk number.
 Again I used the LogisticRegression model, and the balanced_accuracy_store to predict the Credit Risk.
-The Confusion Matrix for Under Sampling is below:
+The Confusion Matrix and the Classifier Report for Under Sampling is below:
 ```
                     Predicted high_risk	Predicted low_risk
 Actual high_risk	50	          37
