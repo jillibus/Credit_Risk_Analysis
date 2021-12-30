@@ -21,7 +21,7 @@ The results of the above, will allow me to provide an analysis of which machine 
 <img src="images/ml_algorithms.png" />
 
 ## Analysis Process
-All of the processes below follow the same 'overall' steps, with different functions to analyze the data.  Using Scikit-learn machine learning library for Python.  The steps will be as follows:
+All of the processes below follow the same 'overall' steps, with different _Models_ to analyze the data.  Using Scikit-learn machine learning library for Python.  The steps will be as follows:
 1)  Read the data into a Python DataFrame
 2)  Check the balance of our target values
 3)  Split the data into Training and Testing data sets (75% to Training 25% to Testing)
