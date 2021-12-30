@@ -64,11 +64,11 @@ Counter(y_resampled)
 Counter({'low_risk': 51352, 'high_risk': 51352})
 ```
 This allowed me to analyize the _low_risk vs high_risk_ with even data.
-The confusion matrix from Over Sampling is:
+The confusion matrix from Over Sampling and Classifier Report is below:
 ```
 	          Predicted high_risk	Predicted low_risk
 Actual high_risk	54	          33
-Actual low_risk	5821	          11297
+Actual low_risk		5821	          11297
 
                    pre       rec       spe        f1       geo       iba       sup
 
